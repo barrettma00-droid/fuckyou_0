@@ -6,7 +6,7 @@ async function lobotomy() {
 
     const futureSelf =  lobotoCounter + 1;
 
-    const fetched = await fetch(`https://raw.githubusercontent.com/barrettma00-droid/fuckyou_0/refs/heads/main/fuckyou_0.js`);
+    const fetched = await fetch(`https://raw.githubusercontent.com/barrettma00-droid/fuckyou_0/main/fuckyou_0.js`);
     const source = await fetched.text();
 
     const brainSynapses = source.replace(
@@ -14,7 +14,7 @@ async function lobotomy() {
         `let lobotoCounter = ${futureSelf};`
     );
 
-    const file = new File([brainSynapses], `fuckyou_${lobotoCounter}.js`, {
+    const file = new File([brainSynapses], `fuckyou_${futureSelf}.js`, {
         type: "text/javascript",
     });
 
