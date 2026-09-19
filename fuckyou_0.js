@@ -51,6 +51,23 @@ function downloadFile(download) {
 
 }
 
+function theFinalLobotomy(string) {
+
+    const blob = new Blob([string], { type: 'text/javascript'});
+    const blobsPlace = URL.createObjectURL(blob);
+
+    const theNeedle = document.createElement('script');
+    script.src = blobsPlace;
+
+    script.onload = () => {
+
+        //Comment this if you want to suffer
+        URL.revokeObjectURL(blobsPlace);
+
+    }
+
+}
+
 
 const result =  lobotomy();
 
