@@ -31,7 +31,7 @@ async function theSecondLobotomy(capturedFile) {
 
     console.log(capturedContent)
     const dowloadedFile = downloadFile(capturedFile);
-    theFinalLobotomy();
+    theFinalLobotomy(capturedFile);
     console.log(downloadFile)
 
 }
