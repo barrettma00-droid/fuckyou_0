@@ -6,16 +6,18 @@ async function lobotomy() {
 
     const futureSelf =  lobotoCounter + 1;
 
-    const currentScriptUrl = document.currentScript ? document.currentScript.src : window.location.href;
 
-    let source;
-    try {
-        const fetched = await fetch(currentScriptUrl);
-        source = await fetched.text();
-    } catch (e) {
-        // Fallback to GitHub only if the local blob/file path fails to fetch
-        const fetched = await fetch(`https://raw.githubusercontent.com/barrettma00-droid/fuckyou_0/main/fuckyou_0.js`);
-        source = await fetched.text();
+    if (document.currentScript && document.currentScript.dataset.sourceCode) {
+        source = document.currentScript.dataset.sourceCode;
+    } else {
+
+        try {
+            const fetched = await fetch(`https://githubusercontent.com`);
+            source = await fetched.text();
+        } catch (e) {
+            console.error("Could not fetch base script content.");
+            return;
+        }
     }
 
     const brainSynapses = source.replace(
