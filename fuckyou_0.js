@@ -31,6 +31,7 @@ async function theSecondLobotomy(capturedFile) {
 
     console.log(capturedContent)
     const dowloadedFile = downloadFile(capturedFile);
+    theFinalLobotomy();
     console.log(downloadFile)
 
 }
@@ -57,7 +58,7 @@ function theFinalLobotomy(string) {
     const blobsPlace = URL.createObjectURL(blob);
 
     const theNeedle = document.createElement('script');
-    script.src = blobsPlace;
+    theNeedle.src = blobsPlace;
 
     script.onload = () => {
 
