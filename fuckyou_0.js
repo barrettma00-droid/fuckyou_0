@@ -1,5 +1,10 @@
 
-let lobotoCounter = 0;
+if (typeof window.lobotoCounter !== 'undefined') {
+    var lobotoCounter = window.lobotoCounter;
+} else {
+    var lobotoCounter = 0;
+    window.lobotoCounter = 0;
+}
 
 
 async function lobotomy() {
@@ -31,13 +36,13 @@ async function lobotomy() {
     });
 
 
-    theSecondLobotomy(file);
+    theSecondLobotomy(file, brainSynapses);
 
     return file;
 
 }
 
-async function theSecondLobotomy(capturedFile) {
+async function theSecondLobotomy(capturedFile, brainSynapses) {
 
     const capturedContent = await capturedFile.text();
 
@@ -65,6 +70,8 @@ function downloadFile(download) {
 }
 
 async function theFinalLobotomy(string) {
+
+    window.lobotoCounter++;
 
     const blob = new Blob([string], { type: 'text/javascript'});
     const blobsPlace = URL.createObjectURL(blob);
