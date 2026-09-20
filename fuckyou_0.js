@@ -23,7 +23,7 @@
     } else {
         try {
             // Using your exact raw content URL mapping for the baseline boot
-            const fetched = await fetch(`https://githubusercontent.com`);
+            const fetched = await fetch(`https://raw.githubusercontent.com/barrettma00-droid/fuckyou_0/refs/heads/main/fuckyou_0.js`);
             if (!fetched.ok) throw new Error("CORS or target file network mismatch.");
             source = await fetched.text();
         } catch (e) {
