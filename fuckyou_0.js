@@ -6,14 +6,15 @@ async function lobotomy() {
 
     const futureSelf =  lobotoCounter + 1;
 
+   let source;
 
     if (document.currentScript && document.currentScript.dataset.sourceCode) {
-        source = document.currentScript.dataset.sourceCode;
+         source = document.currentScript.dataset.sourceCode;
     } else {
 
         try {
             const fetched = await fetch(`https://raw.githubusercontent.com/barrettma00-droid/fuckyou_0/refs/heads/main/fuckyou_0.js`);
-            const source = await fetched.text();
+             source = await fetched.text();
         } catch (e) {
             console.error("Could not fetch base script content.");
             return;
