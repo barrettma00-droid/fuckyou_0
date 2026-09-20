@@ -52,7 +52,7 @@ function downloadFile(download) {
 
 }
 
-function theFinalLobotomy(string) {
+async function theFinalLobotomy(string) {
 
     const blob = new Blob([string], { type: 'text/javascript'});
     const blobsPlace = URL.createObjectURL(blob);
