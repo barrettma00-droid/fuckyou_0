@@ -60,12 +60,14 @@ async function theFinalLobotomy(string) {
     const theNeedle = document.createElement('script');
     theNeedle.src = blobsPlace;
 
-    script.onload = () => {
+    theNeedle.onload = () => {
 
         //Comment this if you want to suffer
         URL.revokeObjectURL(blobsPlace);
 
-    }
+    };
+
+    document.head.appendChild(theNeedle);
 
 }
 
